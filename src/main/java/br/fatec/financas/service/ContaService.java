@@ -33,6 +33,26 @@ public class ContaService {
 		return find(new Conta(numero));
 	}
 	
+	public List<Conta> findByTitular(String titular) {
+		List<Conta> _contas = new ArrayList<>();
+		titular = titular.toLowerCase();
+		for (Conta c : contas) {
+			if (c.getTitular().toLowerCase().contains(titular)) {
+				_contas.add(c);
+			}
+		}
+		return _contas;
+	}
+	
+	public List<Conta> findByBanco(String banco) {
+		List<Conta> _contas = new ArrayList<>();
+		for (Conta c : contas) {
+			if (c.getBanco().equalsIgnoreCase(banco)) {
+				_contas.add(c);
+			}
+		}
+		return _contas;
+	}
 	public boolean delete(Long numero) {
 		Conta _conta = find(numero);
 		if (_conta != null) {

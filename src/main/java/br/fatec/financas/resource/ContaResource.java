@@ -32,7 +32,21 @@ public class ContaResource {
 			return Response.ok(_conta).build();
 		return Response.status(Response.Status.NOT_FOUND).build();
 	}
+	
+	@Path("/titular/{titular}")
+	@GET
+	@Produces("application/json")
+	public Response getByTitular(@PathParam("titular") String titular) {
+		return Response.ok(service.findByTitular(titular)).build();
+	}
 
+	@Path("/banco/{banco}")
+	@GET
+	@Produces("application/json")
+	public Response getByBanco(@PathParam("banco") String banco) {
+		return Response.ok(service.findByBanco(banco)).build();
+	}
+	
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
